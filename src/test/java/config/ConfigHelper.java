@@ -1,3 +1,4 @@
+/*
 package config;
 
 import org.aeonbits.owner.ConfigFactory;
@@ -23,3 +24,5 @@ public class ConfigHelper {
         return getConfig().getSelenoidUrl();
     }
 }
+
+ */

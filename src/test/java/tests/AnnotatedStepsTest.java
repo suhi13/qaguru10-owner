@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
-public class AnnotatedStepsTest extends BaseTest {
+public class AnnotatedStepsTest extends BaseTest{
 
     private final static String BASE_URL = "https://github.com";
     private final static String REPOSITORY = "suhi13/y_qaguru";

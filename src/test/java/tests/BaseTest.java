@@ -1,7 +1,6 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
-import config.ConfigHelper;
 import config.WebDriverConfig;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
@@ -15,24 +14,23 @@ import static helpers.AttachmentHelpers.*;
 
 public class BaseTest {
 
+    static final WebDriverConfig config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
+
     @BeforeAll
     static void setup() {
-        //final WebDriverConfig config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
         addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
 
         Configuration.startMaximized = true;
-        Configuration.browser = ConfigHelper.getBrowser();
-        Configuration.browserVersion = ConfigHelper.getBrowserVersion();
+        Configuration.browser = config.getBrowser();
+        Configuration.browserVersion = config.getBrowserVersion();
 
-        /*
-        if (ConfigHelper.getSelenoidUrl() != null) {
-            Configuration.remote = ConfigHelper.getSelenoidUrl();
+        if (config.getSelenoidUrl() != null) {
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("enableVNC", true);
             capabilities.setCapability("enableVideo", true);
             Configuration.browserCapabilities = capabilities;
+            Configuration.remote = config.getSelenoidUrl();
         }
-         */
     }
 
     @AfterEach
