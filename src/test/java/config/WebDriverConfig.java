@@ -2,9 +2,9 @@ package config;
 
 import org.aeonbits.owner.Config;
 
-import static org.aeonbits.owner.Config.Sources;
+@Config.Sources("classpath:${environment}.properties")
 
-@Sources("classpath:${environment}.properties")
+public
 interface WebDriverConfig extends Config {
 
     @Key("browser")
@@ -13,9 +13,8 @@ interface WebDriverConfig extends Config {
     @Key("browser.version")
     String getBrowserVersion();
 
-    @Key("remote")
-    boolean isRemote();
-
     @Key("selenoid.url")
     String getSelenoidUrl();
 }
+//gradle test -Denvironment=local
+//gradle test -Denvironment=remote
